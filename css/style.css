@@ -1,19 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
 *{
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
 }
 
+/* Variáveis que podem ser usadas para todo o documento */
+/* Dark Mode */
 :root{
     --bg-url: url(../img/bg-desktop.jpg);
+    --text-color: #ffffff;
+    --stroke-color: rgba(255, 255, 255, 0.5);
+    --surface-color: rgba(255, 255, 255, 0.1);
+    --surface-color-hover: rgba(255, 255, 255, 0.5);
+    --switch-gb-url: url(../img/moonStars.svg);
+    --highlight-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Light Mode */
+.light{
+    --bg-url: url(../img/bg-desktop-light.jpg);
+    --text-color: #000000;
+    --stroke-color: rgba(0, 0, 0, 0.5);
+    --surface-color: rgba(0, 0, 0, 0.1);
+    --surface-color-hover: rgba(0, 0, 0, 0.5);
+    --switch-gb-url: url(../img/sun.svg);
+    --highlight-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Modificações gerais, se aplicam ao body inteiro. */
+body *{
+    font-family: "Inter", sans-serif;
+    color: var(--text-color);
+    text-decoration: none;
 }
 
 body{
     background: var(--bg-url) no-repeat top center / cover;
     height: 100vh;
-
 }
 
+/* Div principal da página, contém todas as outras*/
 #container{
     width: 100%;
     max-width: 588px;
@@ -21,6 +49,7 @@ body{
     padding: 0px 24px;
 }
 
+/* Perfil */
 #profile{
     text-align: center;
     padding: 24px;
@@ -38,5 +67,119 @@ body{
 }
 
 #profile p{
+    margin-top: 8px;
+    font-weight: 500;
+    line-height: 24px;
+}
 
+/* Switch */
+#switch{
+    position: relative; /* Agora o botão está relativo dentro da div */
+    width: 64px;
+    margin: 4px auto;
+}
+
+#switch button{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 0;
+    background: #ffffff var(--switch-gb-url) no-repeat center;
+
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+
+    animation: slide-out 0.2s;
+}
+
+#switch button:hover{
+    outline: 8px solid var(--highlight-color);
+}
+
+.light #switch button{
+    animation: slide-in 0.2s forwards;
+}
+
+#switch span{
+    display: block;
+    width: 64px;
+    height: 24px;
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    border-radius: 24px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+/* Links */
+#links ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+}
+
+#links ul li a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 24px;
+    border: 1px solid var(--stroke-color);
+    border-radius: 8px;
+    background: var(--surface-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#links ul li a:hover{
+    background: var(--surface-color-hover);
+    border: 1px solid var(--text-color);
+}
+
+/* Ícones das redes sociais */
+#socialLinks {
+    display: flex;
+    justify-content: center;
+    padding: 24px;
+    gap: 16px;
+    font-size: 24px;
+}
+
+#socialLinks a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Rodapé */
+#footer{
+    text-align: center;
+    font-size: 14px;
+    padding: 24px;
+}
+
+#footer a{
+    text-decoration: none;
+}
+
+/* Animações do botão */
+@keyframes slide-in {
+    from {
+        left: 0;
+    }
+    to {
+        left: 50%;
+    }
+}
+
+@keyframes slide-out {
+    from {
+        left: 50%;
+    }
+    to {
+        left: 0;
+    }
 }
